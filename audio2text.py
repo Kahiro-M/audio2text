@@ -7,6 +7,14 @@ import os
 import tkinter, tkinter.filedialog, tkinter.messagebox
 import datetime
 
+dir_path = './'
+listdir = [
+    f for f in os.listdir(dir_path) if os.path.isfile(os.path.join(dir_path, f))
+]
+if('ffmpeg.exe' not in listdir):
+    input('実行ファイルと同じ階層にffmpeg.exeを配置してください。\n終了します。')
+    sys.exit()
+
 # 一時的にカレントディレクトリのffmpeg.exeへパスを通す
 cwd = os.getcwd()
 bin_path = os.path.join(cwd)
@@ -78,7 +86,7 @@ if __name__ == '__main__':
         root = tkinter.Tk()
         root.withdraw()
         fTyp = [("","")]
-        iDir = os.path.abspath(os.path.dirname(__file__))
+        iDir = os.path.abspath(dir_path)
         # tkinter.messagebox.showinfo('文字起こし','処理ファイルを選択してください')
         file = tkinter.filedialog.askopenfilename(initialdir = iDir)
         fileList = [file]
