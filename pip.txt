@@ -1,0 +1,5 @@
+pip install git+https://github.com/guillaumekln/faster-whisper.git
+pip install ffmpeg-python
+pip install pyinstaller
+
+pip install git+https://github.com/guillaumekln/faster-whisper.git ffmpeg-python pyinstaller
