@@ -1,4 +1,3 @@
-# https://www.my-hacks.info/2023/05/03/%e6%99%82%e9%96%93%e3%81%a8%e3%82%b3%e3%82%b9%e3%83%88%e3%82%92%e5%89%8a%e6%b8%9b%e3%81%99%e3%82%8b%ef%bc%81python%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%9f%e3%83%93%e3%82%b8%e3%83%8d%e3%82%b9%e3%81%ab/
 import sys
 from faster_whisper import WhisperModel
 import ffmpeg
