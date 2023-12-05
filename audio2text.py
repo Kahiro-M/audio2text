@@ -73,19 +73,22 @@ def ffmpeg_mp3(file):
  
  
 if __name__ == '__main__':
-    # ファイル選択ダイアログの表示
-    root = tkinter.Tk()
-    root.withdraw()
-    fTyp = [("",".mp3")]
-    iDir = os.path.abspath(os.path.dirname(__file__))
-    # tkinter.messagebox.showinfo('文字起こし','処理ファイルを選択してください')
-    file = tkinter.filedialog.askopenfilename(filetypes = fTyp,initialdir = iDir)
-    fileList = [file]
+    if(len(sys.argv)<2):
+        # ファイル選択ダイアログの表示
+        root = tkinter.Tk()
+        root.withdraw()
+        fTyp = [("","")]
+        iDir = os.path.abspath(os.path.dirname(__file__))
+        # tkinter.messagebox.showinfo('文字起こし','処理ファイルを選択してください')
+        file = tkinter.filedialog.askopenfilename(initialdir = iDir)
+        fileList = [file]
+    else:
+        fileList = sys.argv[1:]
     if(len(fileList)>0):
         print('========= 文字起こし開始 '+datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')+' =========')
         textfile = whisper_mp3(fileList)
         print('========= 文字起こし完了 '+datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')+' =========\n', '以下のファイルを作成しました。\n・'+textfile)
         # tkinter.messagebox.showinfo('文字起こし処理完了', '以下のファイルを作成しました。\n'+textfile)
     
-    input()
+    input('何かキーを押すと終了します。')
     # print('文字起こし処理が完了しました。')
