@@ -14,16 +14,16 @@ if('ffmpeg.exe' not in listdir):
     input('実行ファイルと同じ階層にffmpeg.exeを配置してください。\n終了します。')
     sys.exit()
 
-
 # 一時的にカレントディレクトリのffmpeg.exeへパスを通す
 cwd = os.getcwd()
 bin_path = os.path.join(cwd)
 os.environ['PATH'] = '{};{}'.format(bin_path, os.environ['PATH']) #セミコロン付きでPATHの先頭に追加
 
-model_size = "medium"
+model_size = "base"
  
  
 def whisper_mp3(attach):
+    outfileList = []
     for i, file in enumerate(attach):
  
         # 対象ファイル
@@ -44,7 +44,8 @@ def whisper_mp3(attach):
         # with open(f'{dname}\\{outfile_name}', "w") as f:
         with open(outfile, "w") as f:
             f.write(result)
-        return outfile
+            outfileList.append(outfile)
+    return outfileList
  
  
 def add_line(s):
@@ -96,7 +97,7 @@ if __name__ == '__main__':
         print('========= 文字起こし開始 '+datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')+' =========')
         print('                   --- 高速版 ---')
         textfile = whisper_mp3(fileList)
-        print('========= 文字起こし完了 '+datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')+' =========\n', '以下のファイルを作成しました。\n・'+textfile)
+        print('========= 文字起こし完了 '+datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')+' =========\n', '以下のファイルを作成しました。\n',textfile)
         # tkinter.messagebox.showinfo('文字起こし処理完了', '以下のファイルを作成しました。\n'+textfile)
     
     input('何かキーを押すと終了します。')
