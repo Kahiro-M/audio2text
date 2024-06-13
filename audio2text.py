@@ -99,5 +99,7 @@ if __name__ == '__main__':
         print('========= 文字起こし完了 '+datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')+' =========\n', '以下のファイルを作成しました。\n',textfile)
         # tkinter.messagebox.showinfo('文字起こし処理完了', '以下のファイルを作成しました。\n'+textfile)
     
-    input('何かキーを押すと終了します。')
-    # print('文字起こし処理が完了しました。')
+    if(len(sys.argv)<2):
+        input('何かキーを押すと終了します。')
+    else:
+        print('文字起こし処理が完了しました。')

@@ -20,7 +20,7 @@ bin_path = os.path.join(cwd)
 os.environ['PATH'] = '{};{}'.format(bin_path, os.environ['PATH']) #セミコロン付きでPATHの先頭に追加
 
 model_size = "base"
- 
+
  
 def whisper_mp3(attach):
     outfileList = []
@@ -100,5 +100,7 @@ if __name__ == '__main__':
         print('========= 文字起こし完了 '+datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')+' =========\n', '以下のファイルを作成しました。\n',textfile)
         # tkinter.messagebox.showinfo('文字起こし処理完了', '以下のファイルを作成しました。\n'+textfile)
     
-    input('何かキーを押すと終了します。')
-    # print('文字起こし処理が完了しました。')
+    if(len(sys.argv)<2):
+        input('何かキーを押すと終了します。')
+    else:
+        print('文字起こし処理が完了しました。')
